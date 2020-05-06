@@ -4,4 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"/>
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/myTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERISCI TITOLO" />
+
+        <EditText
+            android:id="@+id/myTitleEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/myDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERISCI DATA" />
+
+        <EditText
+            android:id="@+id/myDateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/myTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERISCI ORARIO" />
+
+        <EditText
+            android:id="@+id/myTimeEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/myMemoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERISCI IL PROMEMORIA" />
+
+        <EditText
+            android:id="@+id/myMemoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/myButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INVIO" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
