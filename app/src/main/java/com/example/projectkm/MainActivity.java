@@ -47,25 +47,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String a = extras.getString("title");
-            String b = extras.getString("date");
-            String c = extras.getString("time");
-            String d = extras.getString("memo");
-            Intent intent = new Intent (this, GalleryFragment.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("title", a);
-            bundle.putString("date", b);
-            bundle.putString("time", c);
-            bundle.putString("memo", d);
-            intent.putExtras(bundle);
-            intent.putExtras(bundle);
-            intent.putExtras(bundle);
-            intent.putExtras(bundle);
-
-        }
     }
 
     @Override

@@ -18,16 +18,22 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.projectkm.MainActivity;
 import com.example.projectkm.R;
+import com.example.projectkm.ui.gallery.DataHolder;
+import com.example.projectkm.ui.gallery.Gallery;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     EditText title, date, time, memo;
     String a,b,c,d;
+    private ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         title=root.findViewById(R.id.myTitleEdit);
         date=root.findViewById(R.id.myDateEdit);
@@ -42,6 +48,8 @@ public class HomeFragment extends Fragment {
                 b=date.getText().toString();
                 c=time.getText().toString();
                 d=memo.getText().toString();
+                Gallery gallery = new Gallery(a,b,c,d);
+                arrayList.add(gallery);
 
                 intent.putExtra("title", a);
                 intent.putExtra("date", b);
@@ -49,6 +57,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("memo", d);
 
                 startActivity(intent);
+
                 Toast.makeText(getActivity(),"LA TUA MEMO E' STATA CREATA, CONTROLLA LA TUA LISTA",Toast.LENGTH_LONG).show();
             }
         });

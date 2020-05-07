@@ -41,12 +41,6 @@ public class GalleryFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle!=null) {
-            a = bundle.getString("title");
-            b = bundle.getString("date");
-            c = bundle.getString("time");
-            d = bundle.getString("memo");
-            Gallery gallery = new Gallery(a,b,c,d);
-            arrayList.add(gallery);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
