@@ -26,6 +26,9 @@ public class GalleryFragment extends Fragment {
     private GalleryViewModel galleryViewModel;
     TextView title, date, time, memo;
     String a,b,c,d;
+    ListView listView;
+    private ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
+    private static GalleryListAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,9 +36,7 @@ public class GalleryFragment extends Fragment {
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         ListView listView=(ListView) root.findViewById(R.id.list);
-        final ArrayList<Gallery> arrayList = new ArrayList<>();
-        final GalleryListAdapter adapter = new GalleryListAdapter(getContext(), R.layout.listview_activity, arrayList);
-        listView.setAdapter(adapter);
+        adapter = new GalleryListAdapter(getContext(), R.layout.listview_activity, arrayList);
 
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
@@ -46,6 +47,7 @@ public class GalleryFragment extends Fragment {
             d = bundle.getString("memo");
             Gallery gallery = new Gallery(a,b,c,d);
             arrayList.add(gallery);
+            listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
 
