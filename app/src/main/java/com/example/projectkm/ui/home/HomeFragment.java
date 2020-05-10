@@ -110,8 +110,6 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("address", e);
 
                 startActivity(intent);
-
-
             }
         });
 

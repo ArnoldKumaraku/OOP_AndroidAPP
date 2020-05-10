@@ -1,19 +1,20 @@
 package com.example.projectkm.ui.gallery;
 
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
@@ -21,7 +22,11 @@ import com.example.projectkm.MainActivity;
 import com.example.projectkm.NotificationReceiver;
 import com.example.projectkm.R;
 
-public class FirstFragment extends Fragment  {
+import static com.example.projectkm.App.CHANNEL_1_ID;
+
+public class FirstFragment extends Fragment {
+
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -30,6 +35,7 @@ public class FirstFragment extends Fragment  {
 
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
+    private Notification notification;
     private NotificationManagerCompat notificationManager;
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -38,13 +44,6 @@ public class FirstFragment extends Fragment  {
         final TextView time = getActivity().findViewById(R.id.myTimeText1);
         final TextView memo = getActivity().findViewById(R.id.myMemoText1);
         final TextView address = getActivity().findViewById(R.id.myAddressText1);
-
-        address.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"indirizzo cliccato",Toast.LENGTH_LONG).show();
-            }
-        });
 
         int index=0;
 
@@ -99,15 +98,32 @@ public class FirstFragment extends Fragment  {
                         R.layout.notification_collapsed);
                 RemoteViews expandedView = new RemoteViews(getActivity().getPackageName(),
                         R.layout.notification_expanded);
-
                 Intent clickIntent = new Intent(getActivity(), NotificationReceiver.class);
-                PendingIntent contentIntent = PendingIntent.getBroadcast(getActivity().getApplicationContext(), 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent clickPendingIntent = PendingIntent.getBroadcast(getActivity(),
+                        0, clickIntent, 0);
+                expandedView.setImageViewResource(R.id.image_view_expanded, R.drawable.memo);
+                expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
 
-                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-                long timeAtButtonClick = System.currentTimeMillis();
-                long tenSecondsInMillis = 1000*10;
-                alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick+tenSecondsInMillis, contentIntent);
+                final Notification notification = new NotificationCompat.Builder(getActivity(), CHANNEL_1_ID)
+                        .setSmallIcon(R.mipmap.ic_launcher_round)
+                        .setCustomContentView(collapsedView)
+                        .setCustomBigContentView(expandedView)
+                        .setAutoCancel(true)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setDefaults(Notification.DEFAULT_SOUND)
+                        .setDefaults(Notification.DEFAULT_VIBRATE)
+                        .build();
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        notificationManager.notify(1, notification);
+                    }
+                }, 4000);
+
             }
         });
     }
 }
+
