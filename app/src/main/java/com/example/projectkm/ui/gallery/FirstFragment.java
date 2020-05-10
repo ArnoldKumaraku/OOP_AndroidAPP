@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -98,8 +97,8 @@ public class FirstFragment extends Fragment {
                         R.layout.notification_collapsed);
                 RemoteViews expandedView = new RemoteViews(getActivity().getPackageName(),
                         R.layout.notification_expanded);
-                Intent clickIntent = new Intent(getActivity(), NotificationReceiver.class);
-                PendingIntent clickPendingIntent = PendingIntent.getBroadcast(getActivity(),
+                final Intent clickIntent = new Intent(getActivity(), NotificationReceiver.class);
+                final PendingIntent clickPendingIntent = PendingIntent.getBroadcast(getActivity(),
                         0, clickIntent, 0);
                 expandedView.setImageViewResource(R.id.image_view_expanded, R.drawable.memo);
                 expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
@@ -108,20 +107,15 @@ public class FirstFragment extends Fragment {
                         .setSmallIcon(R.mipmap.ic_launcher_round)
                         .setCustomContentView(collapsedView)
                         .setCustomBigContentView(expandedView)
-                        .setAutoCancel(true)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setDefaults(Notification.DEFAULT_SOUND)
-                        .setDefaults(Notification.DEFAULT_VIBRATE)
                         .build();
-
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+
                         notificationManager.notify(1, notification);
                     }
                 }, 4000);
-
             }
         });
     }
