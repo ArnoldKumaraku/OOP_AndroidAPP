@@ -1,5 +1,4 @@
 package com.example.projectkm.ui.gallery;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +7,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectkm.R;
 
 import java.util.ArrayList;
+
 
 public class GalleryListAdapter extends ArrayAdapter<Gallery> {
 
@@ -21,8 +22,6 @@ public class GalleryListAdapter extends ArrayAdapter<Gallery> {
     private static class ViewHolder {
         TextView title;
         TextView date;
-        TextView time;
-        TextView memo;
     }
 
     public GalleryListAdapter(Context context, int resource, ArrayList<Gallery> objects){
@@ -36,8 +35,6 @@ public class GalleryListAdapter extends ArrayAdapter<Gallery> {
     public View getView(int position, View convertView, ViewGroup parent){
         String title=getItem(position).getTitle();
         String date=getItem(position).getDate();
-        String time=getItem(position).getTime();
-        String memo=getItem(position).getMemo();
         final View result;
         ViewHolder holder;
         if(convertView==null) {
@@ -46,8 +43,6 @@ public class GalleryListAdapter extends ArrayAdapter<Gallery> {
             holder = new ViewHolder();
             holder.title=convertView.findViewById(R.id.myTitleText);
             holder.date=convertView.findViewById(R.id.myDateText);
-            holder.time=convertView.findViewById(R.id.myTimeText);
-            holder.memo=convertView.findViewById(R.id.myMemotext);
             result=convertView;
             convertView.setTag(holder);
         }else{
@@ -57,8 +52,6 @@ public class GalleryListAdapter extends ArrayAdapter<Gallery> {
 
         holder.title.setText(title);
         holder.date.setText(date);
-        holder.time.setText(time);
-        holder.memo.setText(memo);
 
         return result;
     }

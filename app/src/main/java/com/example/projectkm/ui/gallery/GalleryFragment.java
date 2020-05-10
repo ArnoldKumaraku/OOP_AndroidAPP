@@ -10,48 +10,73 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.projectkm.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import com.example.projectkm.ui.gallery.DataHolder;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
 
 public class GalleryFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
-    TextView title, date, time, memo;
-    String a,b,c,d;
-    ListView listView;
     private ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
     private static GalleryListAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
 
+        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         loadData();
 
         ListView listView=(ListView) root.findViewById(R.id.list);
         adapter = new GalleryListAdapter(getContext(), R.layout.listview_activity, arrayList);
 
-        Intent intent = getActivity().getIntent();
+        final Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle!=null) {
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
+
+        final RadioButton titleRadio = root.findViewById(R.id.myTitleRadio);
+        final RadioButton dateRadio = root.findViewById(R.id.myDateRadio);
+        Button btn = root.findViewById(R.id.mySortButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(titleRadio.isChecked()){
+                    Collections.sort(arrayList, new Comparator<Gallery>() {
+                        @Override
+                        public int compare(Gallery o1, Gallery o2) {
+                            return o1.getTitle().compareTo(o2.getTitle());
+                        }
+                    });
+                }
+
+                if(dateRadio.isChecked()){
+                    Collections.sort(arrayList, new Comparator<Gallery>() {
+                        @Override
+                        public int compare(Gallery o1, Gallery o2) {
+                            return o1.getDate().compareTo(o2.getDate());
+                        }
+                    });
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
 
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -71,6 +96,20 @@ public class GalleryFragment extends Fragment {
                         .setNegativeButton("No", null)
                         .show();
                 return true;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent1 = new Intent(getContext(), Memo.class);
+                intent1.putExtra("ttitle", arrayList.get(position).getTitle());
+                intent1.putExtra("ddate", arrayList.get(position).getDate());
+                intent1.putExtra("ttime", arrayList.get(position).getTime());
+                intent1.putExtra("mmemo", arrayList.get(position).getMemo());
+                intent1.putExtra("aaddress", arrayList.get(position).getAddress());
+                intent1.putExtra("index", position);
+                startActivity(intent1);
             }
         });
 

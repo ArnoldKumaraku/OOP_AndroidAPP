@@ -1,16 +1,20 @@
 package com.example.projectkm.ui.gallery;
-
 public class Gallery {
     private String title;
     private String date;
     private String time;
     private String memo;
+    private String address;
 
-    public Gallery(String title, String date, String time, String memo) {
+    public Gallery(String title, String date, String time, String memo, String address) {
         this.title=title;
         this.date=date;
         this.time=time;
         this.memo=memo;
+        this.address=address;
+    }
+
+    public Gallery() {
     }
 
 
@@ -45,4 +49,8 @@ public class Gallery {
     public void setMemo(String memo) {
         this.memo = memo;
     }
+
+    public String getAddress() { return address; }
+
+    public void setAddress(String address) { this.address = address; }
 }

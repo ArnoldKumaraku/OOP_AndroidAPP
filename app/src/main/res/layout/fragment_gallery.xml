@@ -4,14 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    android:orientation="vertical"
+    tools:context=".GalleryFragment">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+
         android:orientation="vertical"
-        android:id="@+id/list"
-        >
-    </ListView>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/myTitleRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ORDINA PER TITOLO" />
+
+            <RadioButton
+                android:id="@+id/myDateRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ORDINA PER DATA" />
+
+            <Button
+                android:id="@+id/mySortButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ORDINA" />
+        </RadioGroup>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="64dp">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

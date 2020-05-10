@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
+    tools:context=".HomeFragment">
     <LinearLayout
 
         android:orientation="vertical"
@@ -62,6 +61,19 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSERISCI INDIRIZZO" />
+
+        <EditText
+            android:id="@+id/myAddressEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/myButton"
