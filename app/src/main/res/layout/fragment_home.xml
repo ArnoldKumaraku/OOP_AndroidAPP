@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
 
         android:orientation="vertical"
@@ -14,24 +17,33 @@
             android:id="@+id/myTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/black"
             android:text="INSERISCI TITOLO" />
 
         <EditText
             android:id="@+id/myTitleEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="18dp"
             android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/myDateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/black"
             android:text="INSERISCI DATA" />
 
         <EditText
             android:id="@+id/myDateEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:editable="false"
             />
 
@@ -39,19 +51,26 @@
             android:id="@+id/myTimeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/black"
             android:text="INSERISCI ORARIO" />
 
         <EditText
             android:id="@+id/myTimeEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            android:layout_margin="20dp"
+            android:editable="false"
+            />
 
         <TextView
             android:id="@+id/myMemoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/black"
             android:text="INSERISCI IL PROMEMORIA" />
 
         <EditText
@@ -60,12 +79,16 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
+            android:layout_margin="20dp"
             android:inputType="textMultiLine" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/black"
             android:text="INSERISCI INDIRIZZO" />
 
         <EditText
@@ -73,13 +96,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_margin="20dp"
             android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/myButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:text="INVIO" />
 
     </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

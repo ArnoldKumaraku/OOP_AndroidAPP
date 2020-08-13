@@ -1,6 +1,7 @@
 package com.example.projectkm.ui.home;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,7 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment{
 
+    int t1Hour, t1Minute, t2Hour, t2Minute;
     DatePickerDialog.OnDateSetListener setListener;
     EditText title, date, time, memo, address;
     String a,b,c,d,e,aa,bb,cc,dd,ee;
@@ -97,6 +100,27 @@ public class HomeFragment extends Fragment{
         });
 
 
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        t1Hour=hourOfDay;
+                        t1Minute=minute;
+                        Calendar calendar1=Calendar.getInstance();
+                        calendar1.set(0,0,0,t1Hour,t1Minute);
+                        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
+                        time.setText(android.text.format.DateFormat.format("hh:mm aa", calendar1));
+
+                    }
+                },12,0,false
+                );
+                timePickerDialog.updateTime(t1Hour,t1Minute);
+                timePickerDialog.show();
+            }
+        });
 
 
 
@@ -118,6 +142,7 @@ public class HomeFragment extends Fragment{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 a=title.getText().toString();
                 b=date.getText().toString();
@@ -125,27 +150,33 @@ public class HomeFragment extends Fragment{
                 d=memo.getText().toString();
                 e=address.getText().toString();
 
-                if(finalIndex !=-1 ){
-                    arrayList.get(bundle1.getInt("iindex")).setTitle(a);
-                    arrayList.get(bundle1.getInt("iindex")).setDate(b);
-                    arrayList.get(bundle1.getInt("iindex")).setTime(c);
-                    arrayList.get(bundle1.getInt("iindex")).setMemo(d);
-                    arrayList.get(bundle1.getInt("iindex")).setAddress(e);
-                    Toast.makeText(getActivity(),"MEMO MODIFICATA",Toast.LENGTH_LONG).show();
+                if(a==null || b==null || c==null || a.length()==0 || b.length()==0 || c.length()==0){
+                    Toast.makeText(getActivity(),"NON HAI COMPILATO I CAMPI OBBLIGATORI",Toast.LENGTH_LONG).show();
                 }else{
-                    insertValues(a,b,c,d,e);
-                    Toast.makeText(getActivity(),"MEMO CREATA, CONTROLLA LA TUA LISTA",Toast.LENGTH_LONG).show();
+
+
+                    if(finalIndex !=-1 ){
+                        arrayList.get(bundle1.getInt("iindex")).setTitle(a);
+                        arrayList.get(bundle1.getInt("iindex")).setDate(b);
+                        arrayList.get(bundle1.getInt("iindex")).setTime(c);
+                        arrayList.get(bundle1.getInt("iindex")).setMemo(d);
+                        arrayList.get(bundle1.getInt("iindex")).setAddress(e);
+                        Toast.makeText(getActivity(),"MEMO MODIFICATA",Toast.LENGTH_LONG).show();
+                    }else{
+                        insertValues(a,b,c,d,e);
+                        Toast.makeText(getActivity(),"MEMO CREATA, CONTROLLA LA TUA LISTA",Toast.LENGTH_LONG).show();
+                    }
+
+                    saveData();
+
+                    intent.putExtra("title", a);
+                    intent.putExtra("date", b);
+                    intent.putExtra("time", c);
+                    intent.putExtra("memo", d);
+                    intent.putExtra("address", e);
+
+                    startActivity(intent);
                 }
-
-                saveData();
-
-                intent.putExtra("title", a);
-                intent.putExtra("date", b);
-                intent.putExtra("time", c);
-                intent.putExtra("memo", d);
-                intent.putExtra("address", e);
-
-                startActivity(intent);
             }
         });
 
