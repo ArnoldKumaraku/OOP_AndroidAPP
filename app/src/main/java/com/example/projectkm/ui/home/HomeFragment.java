@@ -91,6 +91,7 @@ public class HomeFragment extends Fragment{
                         date.setText(d);
                     }
                 }, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
