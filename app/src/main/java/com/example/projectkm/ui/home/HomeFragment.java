@@ -1,36 +1,25 @@
 package com.example.projectkm.ui.home;
 
-import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.preference.PreferenceManager;
-import android.provider.SyncStateContract;
-import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.projectkm.MainActivity;
 import com.example.projectkm.R;
@@ -39,20 +28,19 @@ import com.example.projectkm.ui.gallery.Gallery;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.Serializable;
-import java.lang.invoke.ConstantCallSite;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
+public class HomeFragment extends Fragment{
 
-
-public class HomeFragment extends Fragment {
-
-
+    DatePickerDialog.OnDateSetListener setListener;
     EditText title, date, time, memo, address;
     String a,b,c,d,e,aa,bb,cc,dd,ee;
     ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -63,6 +51,53 @@ public class HomeFragment extends Fragment {
         time=root.findViewById(R.id.myTimeEdit);
         memo=root.findViewById(R.id.myMemoEdit);
         address=root.findViewById(R.id.myAddressEdit);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(), R.style.Theme_AppCompat_DayNight, setListener, year, month, day
+                );
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month=month+1;
+                String d = day+"-"+month+"-"+year;
+                date.setText(d);
+
+            }
+        };
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month+1;
+                        String d = day+"-"+month+"-"+year;
+                        date.setText(d);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
+
+
+
+
 
         loadData();
         int index=-1;
