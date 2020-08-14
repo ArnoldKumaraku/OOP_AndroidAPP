@@ -152,19 +152,17 @@ public class HomeFragment extends Fragment{
 
                 if(a==null || b==null || c==null || a.length()==0 || b.length()==0 || c.length()==0){
                     Toast.makeText(getActivity(),"NON HAI COMPILATO I CAMPI OBBLIGATORI",Toast.LENGTH_LONG).show();
-                }else{
-
-
-                    if(finalIndex !=-1 ){
+                }else {
+                    if (finalIndex != -1) {
                         arrayList.get(bundle1.getInt("iindex")).setTitle(a);
                         arrayList.get(bundle1.getInt("iindex")).setDate(b);
                         arrayList.get(bundle1.getInt("iindex")).setTime(c);
                         arrayList.get(bundle1.getInt("iindex")).setMemo(d);
                         arrayList.get(bundle1.getInt("iindex")).setAddress(e);
-                        Toast.makeText(getActivity(),"MEMO MODIFICATA",Toast.LENGTH_LONG).show();
-                    }else{
-                        insertValues(a,b,c,d,e);
-                        Toast.makeText(getActivity(),"MEMO CREATA, CONTROLLA LA TUA LISTA",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "MEMO MODIFICATA", Toast.LENGTH_LONG).show();
+                    } else {
+                        insertValues(a, b, c, d, e);
+                        Toast.makeText(getActivity(), "MEMO CREATA, CONTROLLA LA TUA LISTA", Toast.LENGTH_LONG).show();
                     }
 
                     saveData();

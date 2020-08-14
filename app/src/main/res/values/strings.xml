@@ -9,7 +9,7 @@
 
     <string name="menu_home">Crea Promemoria</string>
     <string name="menu_gallery">Lista Promemoria</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Cestino</string>
 
     <string name="home_second">Home Second</string>
     <string name="title_activity_memo">Memo</string>

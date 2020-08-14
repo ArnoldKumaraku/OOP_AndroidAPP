@@ -6,68 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.FirstFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/back" />
+    
     <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+    
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic|bold"
             android:text="TITOLO:" />
 
         <TextView
             android:id="@+id/myTitleText1"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView3"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic|bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DATA:" />
 
         <TextView
             android:id="@+id/myDateText1"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView3"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic|bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ORARIO:" />
 
         <TextView
             android:id="@+id/myTimeText1"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView3"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic|bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PROMEMORIA:" />
 
         <TextView
             android:id="@+id/myMemoText1"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView6"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic|bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="INDIRIZZO" />
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/myAddressText1"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="italic"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
