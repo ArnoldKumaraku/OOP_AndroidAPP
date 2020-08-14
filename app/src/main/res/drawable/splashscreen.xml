@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape
+                    android:shape="rectangle">
+                    <solid
+                        android:color="#000000" />
+                    <size
+                        android:width="1080px"
+                        android:height="1920px" />
+                    <padding
+                        android:left="0dp"
+                        android:top="0dp"
+                        android:right="0dp"
+                        android:bottom="0dp" />
+                </shape>
+            </item>
+            <item
+                android:gravity="center_vertical|center_horizontal"
+                android:drawable="@drawable/ic_logo"
+                android:width="96dp"
+                android:height="96dp"
+                tools:ignore="UnusedAttribute" />
+            <item
+                android:bottom="170dp"
+                android:height="50dp"
+                android:width="100dp"
+                android:gravity="bottom|center_horizontal"
+                android:drawable="@drawable/pp"
+                tools:ignore="UnusedAttribute" />
+
+            <item
+                android:bottom="70dp"
+                android:height="50dp"
+                android:width="300dp"
+                android:gravity="bottom|center_horizontal"
+                android:drawable="@drawable/qq"
+                tools:ignore="UnusedAttribute" />
+        </layer-list>
+    </item>
+</selector>

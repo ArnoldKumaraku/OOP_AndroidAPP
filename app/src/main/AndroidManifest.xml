@@ -11,18 +11,19 @@
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/iconout"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/iconout"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:logo="@mipmap/iconout"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
         <activity
+            android:icon="@mipmap/iconout"
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/splashScreenTheme"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
