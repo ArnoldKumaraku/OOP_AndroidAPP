@@ -106,7 +106,7 @@ public class FirstFragment extends Fragment {
                 expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
 
                 final Notification notification = new NotificationCompat.Builder(getActivity(), CHANNEL_1_ID)
-                        .setSmallIcon(R.mipmap.ic_launcher_round)
+                        .setSmallIcon(R.mipmap.iconout)
                         .setCustomContentView(collapsedView)
                         .setCustomBigContentView(expandedView)
                         .build();
