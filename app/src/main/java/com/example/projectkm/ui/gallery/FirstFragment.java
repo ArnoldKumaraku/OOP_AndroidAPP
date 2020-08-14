@@ -21,6 +21,8 @@ import com.example.projectkm.MainActivity;
 import com.example.projectkm.NotificationReceiver;
 import com.example.projectkm.R;
 
+import java.util.Random;
+
 import static com.example.projectkm.App.CHANNEL_1_ID;
 
 public class FirstFragment extends Fragment {
@@ -100,7 +102,7 @@ public class FirstFragment extends Fragment {
                 final Intent clickIntent = new Intent(getActivity(), NotificationReceiver.class);
                 final PendingIntent clickPendingIntent = PendingIntent.getBroadcast(getActivity(),
                         0, clickIntent, 0);
-                expandedView.setImageViewResource(R.id.image_view_expanded, R.drawable.memo);
+                expandedView.setImageViewResource(R.id.image_view_expanded, R.mipmap.prome);
                 expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
 
                 final Notification notification = new NotificationCompat.Builder(getActivity(), CHANNEL_1_ID)
@@ -112,7 +114,6 @@ public class FirstFragment extends Fragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
                         notificationManager.notify(1, notification);
                     }
                 }, 4000);

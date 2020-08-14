@@ -4,110 +4,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/back"
     tools:context=".HomeFragment">
+
     <ScrollView
+        android:paddingTop="8dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    <LinearLayout
-
-        android:orientation="vertical"
-        android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/myTitleText"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="italic|bold"
-            android:textColor="@color/black"
-            android:text="INSERISCI TITOLO" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/myTitleEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:textSize="18dp"
-            android:inputType="textPersonName" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/myDateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="italic|bold"
-            android:textColor="@color/black"
-            android:text="INSERISCI DATA" />
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="#2d3e50"
+                    android:background="@drawable/title" />
 
-        <EditText
-            android:id="@+id/myDateEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:editable="false"
-            />
+                <TextView
+                    android:id="@+id/myTitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI TITOLO"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="italic|bold" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/myTimeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="italic|bold"
-            android:textColor="@color/black"
-            android:text="INSERISCI ORARIO" />
+            <EditText
+                android:id="@+id/myTitleEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="textPersonName"
+                android:textSize="18dp" />
 
-        <EditText
-            android:id="@+id/myTimeEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:editable="false"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/myMemoText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="italic|bold"
-            android:textColor="@color/black"
-            android:text="INSERISCI IL PROMEMORIA" />
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/date"
+                    android:backgroundTint="#2d3e50" />
 
-        <EditText
-            android:id="@+id/myMemoEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:layout_margin="20dp"
-            android:inputType="textMultiLine" />
+                <TextView
+                    android:id="@+id/myDateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI DATA"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="italic|bold" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textStyle="italic|bold"
-            android:textColor="@color/black"
-            android:text="INSERISCI INDIRIZZO" />
+            <EditText
+                android:id="@+id/myDateEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:editable="false" />
 
-        <EditText
-            android:id="@+id/myAddressEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_margin="20dp"
-            android:inputType="textPersonName" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/myButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:text="INVIO" />
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="#2d3e50"
+                    android:background="@drawable/time" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/myTimeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI ORARIO"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="italic|bold" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/myTimeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:editable="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/memo"
+                    android:backgroundTint="#2d3e50"/>
+
+                <TextView
+                    android:id="@+id/myMemoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI IL PROMEMORIA"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="italic|bold" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/myMemoEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="#2d3e50"
+                    android:background="@drawable/address" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INSERISCI INDIRIZZO"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="italic|bold" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/myAddressEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/myButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:backgroundTint="#2d3e50"
+                android:background="@drawable/send"
+                />
+
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
