@@ -33,7 +33,7 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="20dp"
-                    android:backgroundTint="#2d3e50"
+                    android:backgroundTint="@color/nobile"
                     android:background="@drawable/title" />
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/date"
-                    android:backgroundTint="#2d3e50" />
+                    android:backgroundTint="@color/nobile" />
 
                 <TextView
                     android:id="@+id/myDateText"
@@ -94,7 +94,7 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="20dp"
-                    android:backgroundTint="#2d3e50"
+                    android:backgroundTint="@color/nobile"
                     android:background="@drawable/time" />
 
                 <TextView
@@ -125,7 +125,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/memo"
-                    android:backgroundTint="#2d3e50"/>
+                    android:backgroundTint="@color/nobile"/>
 
                 <TextView
                     android:id="@+id/myMemoText"
@@ -156,7 +156,7 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="20dp"
-                    android:backgroundTint="#2d3e50"
+                    android:backgroundTint="@color/nobile"
                     android:background="@drawable/address" />
 
                 <TextView
@@ -182,7 +182,7 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical|center_horizontal"
-                android:backgroundTint="#2d3e50"
+                android:backgroundTint="@color/nobile"
                 android:background="@drawable/send"
                 />
 

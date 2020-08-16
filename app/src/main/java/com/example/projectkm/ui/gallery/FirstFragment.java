@@ -1,29 +1,40 @@
 package com.example.projectkm.ui.gallery;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.AlarmClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectkm.MainActivity;
-import com.example.projectkm.NotificationReceiver;
 import com.example.projectkm.R;
 
-import java.util.Random;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
-import static com.example.projectkm.App.CHANNEL_1_ID;
 
 public class FirstFragment extends Fragment {
 
@@ -89,34 +100,51 @@ public class FirstFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, secondFragment).commit();
             }
         });
-        notificationManager = NotificationManagerCompat.from(getActivity());
+
         Button btn3 = getActivity().findViewById(R.id.myrememberButton);
         btn3.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ServiceCast")
             @Override
             public void onClick(View v) {
-                RemoteViews collapsedView = new RemoteViews(getActivity().getPackageName(),
-                        R.layout.notification_collapsed);
-                RemoteViews expandedView = new RemoteViews(getActivity().getPackageName(),
-                        R.layout.notification_expanded);
-                final Intent clickIntent = new Intent(getActivity(), NotificationReceiver.class);
-                final PendingIntent clickPendingIntent = PendingIntent.getBroadcast(getActivity(),
-                        0, clickIntent, 0);
-                expandedView.setImageViewResource(R.id.image_view_expanded, R.mipmap.prome);
-                expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
+                /*
 
-                final Notification notification = new NotificationCompat.Builder(getActivity(), CHANNEL_1_ID)
-                        .setSmallIcon(R.mipmap.iconout)
-                        .setCustomContentView(collapsedView)
-                        .setCustomBigContentView(expandedView)
-                        .build();
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        notificationManager.notify(1, notification);
+                 */
+                String str1, str2, str3;
+                String tttt = time.getText().toString();
+                char primo = tttt.charAt(0), secondo = tttt.charAt(1), terzo = tttt.charAt(3), quarto = tttt.charAt(4), quinto = tttt.charAt(6), sesto = tttt.charAt(7);
+                StringBuilder sb1 = new StringBuilder();
+                sb1.append(primo);
+                sb1.append(secondo);
+                str1 = sb1.toString();
+                StringBuilder sb2 = new StringBuilder();
+                sb2.append(terzo);
+                sb2.append(quarto);
+                str2 = sb2.toString();
+                StringBuilder sb3 = new StringBuilder();
+                sb3.append(quinto);
+                sb3.append(sesto);
+                str3 = sb3.toString();
+                if(str3.equals("PM")){
+                    if(!str1.equals("12")) {
+                        int s1 = Integer.parseInt(str1) + 12;
+                        str1 = String.valueOf(s1);
                     }
-                }, 4000);
+                }else{
+                    if(str1.equals("12")){
+                        str1="00";
+                    }
+                }
+
+                String qqqq= date.getText().toString();
+                Calendar cal = Calendar.getInstance();
+                cal.set(Calendar.DAY_OF_MONTH, 30);
+                cal.set(Calendar.MONTH, 8);
+                cal.set(Calendar.YEAR, 2020);
+                Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
+                intent.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(str1));
+                intent.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(str2));
+                intent.putExtra(AlarmClock.EXTRA_MESSAGE, title.getText().toString());
+                intent.putExtra(AlarmClock.EXTRA_DAYS, cal.get(Calendar.DAY_OF_MONTH));
+                startActivity(intent);
             }
         });
     }

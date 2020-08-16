@@ -27,16 +27,16 @@
                 tools:ignore="UnusedAttribute" />
             <item
                 android:bottom="170dp"
-                android:height="50dp"
-                android:width="100dp"
+                android:height="20dp"
+                android:width="60dp"
                 android:gravity="bottom|center_horizontal"
                 android:drawable="@drawable/pp"
                 tools:ignore="UnusedAttribute" />
 
             <item
-                android:bottom="70dp"
-                android:height="50dp"
-                android:width="300dp"
+                android:bottom="120dp"
+                android:height="20dp"
+                android:width="200dp"
                 android:gravity="bottom|center_horizontal"
                 android:drawable="@drawable/qq"
                 tools:ignore="UnusedAttribute" />

@@ -38,10 +38,10 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment{
 
-    int t1Hour, t1Minute, t2Hour, t2Minute;
+    int t1Hour, t1Minute;
     DatePickerDialog.OnDateSetListener setListener;
     EditText title, date, time, memo, address;
-    String a,b,c,d,e,aa,bb,cc,dd,ee;
+    String a,b,c,d,e;
     ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
