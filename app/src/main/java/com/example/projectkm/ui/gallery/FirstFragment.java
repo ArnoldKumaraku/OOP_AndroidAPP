@@ -33,22 +33,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 
 public class FirstFragment extends Fragment {
 
-
+    private  NotificationHelper mNotificationHelper;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-
+        mNotificationHelper = new NotificationHelper(getActivity());
 
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
-    private Notification notification;
-    private NotificationManagerCompat notificationManager;
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final TextView title = getActivity().findViewById(R.id.myTitleText1);
@@ -105,9 +104,7 @@ public class FirstFragment extends Fragment {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
 
-                 */
                 String str1, str2, str3;
                 String tttt = time.getText().toString();
                 char primo = tttt.charAt(0), secondo = tttt.charAt(1), terzo = tttt.charAt(3), quarto = tttt.charAt(4), quinto = tttt.charAt(6), sesto = tttt.charAt(7);
@@ -134,17 +131,22 @@ public class FirstFragment extends Fragment {
                     }
                 }
 
-                String qqqq= date.getText().toString();
-                Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.DAY_OF_MONTH, 30);
-                cal.set(Calendar.MONTH, 8);
-                cal.set(Calendar.YEAR, 2020);
-                Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
-                intent.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(str1));
-                intent.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(str2));
-                intent.putExtra(AlarmClock.EXTRA_MESSAGE, title.getText().toString());
-                intent.putExtra(AlarmClock.EXTRA_DAYS, cal.get(Calendar.DAY_OF_MONTH));
-                startActivity(intent);
+                String dt= date.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                Calendar c = Calendar.getInstance();
+                try {
+                    c.setTime(sdf.parse(dt));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                c.set(Calendar.HOUR, Integer.parseInt(str1));
+                c.set(Calendar.MINUTE, Integer.parseInt(str2));
+
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                Intent intent = new Intent(getContext().getApplicationContext(), AlertReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, 0);
+                Toast.makeText(getActivity(), "Notifica impostata", Toast.LENGTH_SHORT).show();
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
             }
         });
     }
