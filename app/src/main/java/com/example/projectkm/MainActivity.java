@@ -1,8 +1,10 @@
 package com.example.projectkm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.example.projectkm.ui.gallery.GalleryFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -16,7 +18,6 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);

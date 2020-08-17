@@ -47,8 +47,8 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannelNotification(String title, String message){
         Intent resultIntent = new Intent(this, MainActivity.class);
+        resultIntent.putExtra("not", 1);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
         return new NotificationCompat.Builder(this, channelID)
                 .setAutoCancel(true)
                 .setSubText("clicca sulla notifica")

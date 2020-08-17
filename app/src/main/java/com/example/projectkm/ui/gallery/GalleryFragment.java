@@ -22,10 +22,8 @@ import androidx.fragment.app.Fragment;
 import com.example.projectkm.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.example.projectkm.ui.gallery.DataHolder;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
