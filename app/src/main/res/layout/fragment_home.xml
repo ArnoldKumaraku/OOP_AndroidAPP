@@ -179,11 +179,12 @@
 
             <Button
                 android:id="@+id/myButton"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INVIO"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical|center_horizontal"
-                android:backgroundTint="@color/nobile"
-                android:background="@drawable/send"
+                android:background="@drawable/button"
                 />
 
         </LinearLayout>

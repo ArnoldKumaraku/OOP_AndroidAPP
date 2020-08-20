@@ -120,6 +120,8 @@
                 android:id="@+id/myfindAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="@drawable/button"
                 android:text="CERCA" />
 
         </LinearLayout>
@@ -130,12 +132,17 @@
             android:id="@+id/myChangeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
             android:text="MODIFICA" />
 
         <Button
             android:id="@+id/myrememberButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
             android:text="RICORDAMELO" />
 
 

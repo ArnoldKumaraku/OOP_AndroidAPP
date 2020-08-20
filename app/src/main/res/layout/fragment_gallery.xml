@@ -14,7 +14,7 @@
         android:src="@mipmap/back" />
 
     <LinearLayout
-
+        android:layout_marginTop="4dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -40,9 +40,12 @@
 
             <Button
                 android:id="@+id/mySortButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:background="@drawable/button"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:text="ORDINA" />
         </RadioGroup>
 
