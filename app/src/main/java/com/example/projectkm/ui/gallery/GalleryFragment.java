@@ -19,7 +19,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.projectkm.MainActivity;
 import com.example.projectkm.R;
+import com.example.projectkm.ui.slideshow.DataHolderS;
+import com.example.projectkm.ui.slideshow.Slideshow;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -30,15 +33,16 @@ import java.util.Comparator;
 
 public class GalleryFragment extends Fragment {
 
+    ArrayList<Slideshow> arrayList2 = DataHolderS.getInstance().array;
     private ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
     private static GalleryListAdapter adapter;
-
+    String a,b,c,d,e;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         loadData();
-
+        loadDataS();
         ListView listView=(ListView) root.findViewById(R.id.list);
         adapter = new GalleryListAdapter(getContext(), R.layout.listview_activity, arrayList);
 
@@ -86,12 +90,29 @@ public class GalleryFragment extends Fragment {
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Intent intent2 = new Intent(getContext(), MainActivity.class);
+                                a = arrayList.get(which_item).getTitle();
+                                b=arrayList.get(which_item).getDate();
+                                c=arrayList.get(which_item).getTime();
+                                d=arrayList.get(which_item).getMemo();
+                                e=arrayList.get(which_item).getAddress();
+                                intent2.putExtra("_title", a);
+                                intent2.putExtra("_date", b);
+                                intent2.putExtra("_time", c);
+                                intent2.putExtra("_memo", d);
+                                intent2.putExtra("_address", e);
+                                intent2.putExtra("_index", which_item);
+                                insertValues(a, b, c, d, e);
                                 arrayList.remove(which_item);
                                 saveData();
+                                saveDataS();
                                 adapter.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), "MEMO ELIMINATA, LA TROVI NEL CESTINO", Toast.LENGTH_LONG).show();
+                                startActivity(intent2);
                             }
                         })
                         .setNegativeButton("No", null)
+                        .setIcon(R.drawable.puntoesclamativo)
                         .show();
                 return true;
             }
@@ -133,5 +154,31 @@ public class GalleryFragment extends Fragment {
         String json = gson.toJson(arrayList);
         editor.putString("task list", json);
         editor.apply();
+    }
+
+    private void saveDataS() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared_preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(arrayList2);
+        editor.putString("garbage list", json);
+        editor.apply();
+    }
+
+    public void loadDataS() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared_preferences", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("garbage list", null);
+        Type type = new TypeToken<ArrayList<Slideshow>>() {}.getType();
+        arrayList2 = gson.fromJson(json, type);
+
+        if (arrayList2 == null) {
+            arrayList2 = DataHolderS.getInstance().array;
+        }
+    }
+
+    public void insertValues(String a, String b, String c, String d, String e){
+        Slideshow slideshow = new Slideshow(a,b,c,d,e);
+        arrayList2.add(slideshow);
     }
 }

@@ -4,14 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back"
     tools:context=".HomeFragment">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/back" />
 
     <ScrollView
         android:paddingTop="8dp"
@@ -24,6 +17,9 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -38,7 +34,7 @@
 
                 <TextView
                     android:id="@+id/myTitleText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INSERISCI TITOLO"
                     android:textColor="@color/black"
@@ -55,6 +51,9 @@
                 android:textSize="18dp" />
 
             <LinearLayout
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -69,7 +68,7 @@
 
                 <TextView
                     android:id="@+id/myDateText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INSERISCI DATA"
                     android:textColor="@color/black"
@@ -85,6 +84,9 @@
                 android:editable="false" />
 
             <LinearLayout
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -99,7 +101,7 @@
 
                 <TextView
                     android:id="@+id/myTimeText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INSERISCI ORARIO"
                     android:textColor="@color/black"
@@ -115,6 +117,9 @@
                 android:editable="false" />
 
             <LinearLayout
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -129,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/myMemoText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INSERISCI IL PROMEMORIA"
                     android:textColor="@color/black"
@@ -147,6 +152,9 @@
                 android:inputType="textMultiLine" />
 
             <LinearLayout
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -161,7 +169,7 @@
 
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INSERISCI INDIRIZZO"
                     android:textColor="@color/black"
@@ -186,7 +194,6 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@drawable/button"
                 />
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

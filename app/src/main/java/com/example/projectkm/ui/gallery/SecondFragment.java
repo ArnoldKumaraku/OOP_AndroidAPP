@@ -24,6 +24,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class SecondFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap map;
     @Override
@@ -54,7 +56,7 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
             String s = bundle.getString("addressmap");
 
             List<Address> addressList = null;
-            if(s!=null){
+            if(s.isEmpty()!=true || s!=null){
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
                 Geocoder geocoder = new Geocoder(getActivity());
                 try {
@@ -66,6 +68,8 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                 map.addMarker(new MarkerOptions().position(latLng).title(s));
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+            }else{
+                Toast.makeText(getActivity(), "INDIRIZZO NON VALIDO", Toast.LENGTH_LONG).show();
             }
         }
     }

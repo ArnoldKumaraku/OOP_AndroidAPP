@@ -27,6 +27,8 @@ import com.example.projectkm.MainActivity;
 import com.example.projectkm.R;
 import com.example.projectkm.ui.gallery.DataHolder;
 import com.example.projectkm.ui.gallery.Gallery;
+import com.example.projectkm.ui.slideshow.DataHolderS;
+import com.example.projectkm.ui.slideshow.Slideshow;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -43,6 +45,7 @@ public class HomeFragment extends Fragment{
     EditText title, date, time, memo, address;
     String a,b,c,d,e;
     ArrayList<Gallery> arrayList = DataHolder.getInstance().array;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -142,7 +145,6 @@ public class HomeFragment extends Fragment{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 a=title.getText().toString();
                 b=date.getText().toString();
@@ -164,9 +166,7 @@ public class HomeFragment extends Fragment{
                         insertValues(a, b, c, d, e);
                         Toast.makeText(getActivity(), "MEMO CREATA, CONTROLLA LA TUA LISTA", Toast.LENGTH_LONG).show();
                     }
-
                     saveData();
-
                     intent.putExtra("title", a);
                     intent.putExtra("date", b);
                     intent.putExtra("time", c);
